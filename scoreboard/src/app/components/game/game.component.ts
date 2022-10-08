@@ -14,12 +14,25 @@ export class GameComponent implements OnInit, Game {
   localTeamScore: number;
   awayTeamScore: number;
 
+  /**
+   *
+   */
   constructor() {
     this.localTeamScore = 0
     this.awayTeamScore = 0
    }
 
   ngOnInit(): void {
+  }
+
+  /**
+   * Updates the game score
+   * @param localTeamScore goals of local team
+   * @param awayTeamScore goals of away team
+   */
+  public updateScore(localTeamScore: number, awayTeamScore: number): void {
+      this.localTeamScore = localTeamScore
+      this.awayTeamScore = awayTeamScore
   }
 
 }
