@@ -30,4 +30,12 @@ describe('ScoreboardComponent', () => {
     expect(component.games[0].awayTeamScore).toEqual(0)
     expect(component.games[0].awayTeamScore).toEqual(0)
   })
+
+  it('should update the score of a game',() => {
+    component.startGame({name:'Mexico'},{name:'Canada'})
+    const gameToUpdate = component.games[0]
+    component.updateScore(1,2,gameToUpdate)
+    expect(component.games[0].localTeamScore).toEqual(1)
+    expect(component.games[0].awayTeamScore).toEqual(2)
+  })
 });
