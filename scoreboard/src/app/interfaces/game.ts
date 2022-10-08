@@ -1,4 +1,3 @@
-
 import { Team } from "./team";
 
 export interface Game{
@@ -6,4 +5,5 @@ export interface Game{
   localTeam: Team
   awayTeamScore: number
   localTeamScore: number
+  updateScore(localTeamScore:number,awayTeamScore:number): void
 }
