@@ -5,7 +5,7 @@ export interface ScoreBoard{
   games: Game[]
 
   startGame(localTeam:Team, awayTeam:Team):void
-  finishGame(game):void
+  finishGame(game:Game):void
   updateScore(localTeamScore:number,awayTeamScore:number):void
   getGamesSummary():string
 }
