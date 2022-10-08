@@ -11,7 +11,7 @@ import {ScoreBoard} from '../../interfaces/score-board'
 export class ScoreboardComponent implements OnInit, ScoreBoard{
 
 
-  @Input games : Game[]
+  @Input() games! : Game[]
 
   constructor() { }
 
