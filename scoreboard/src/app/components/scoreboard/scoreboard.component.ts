@@ -30,4 +30,8 @@ export class ScoreboardComponent implements OnInit, ScoreBoard{
 
   }
 
+  getGamesSummary(): string {
+      return ''
+  }
+
 }
