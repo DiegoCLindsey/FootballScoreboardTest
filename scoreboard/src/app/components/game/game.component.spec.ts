@@ -36,6 +36,10 @@ describe('GameComponent', () => {
   })
 
   it('should update the scores of the game', () => {
-
+    expect(component.awayTeamScore).toEqual(0)
+    expect(component.localTeamScore).toEqual(0)
+    component.updateScore(1,2)
+    expect(component.localTeamScore).toEqual(1)
+    expect(component.awayTeamScore).toEqual(2)
   })
 });
