@@ -11,8 +11,8 @@ export class GameComponent implements OnInit, Game {
 
   @Input() localTeam!: Team;
   @Input() awayTeam!: Team;
-  localTeamScore: number;
-  awayTeamScore: number;
+  @Input() localTeamScore: number = 0;
+  @Input() awayTeamScore: number = 0;
 
   /**
    *

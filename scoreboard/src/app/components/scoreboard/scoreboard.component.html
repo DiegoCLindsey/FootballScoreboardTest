@@ -1,1 +1,3 @@
-<app-game [localTeam]="{name:'Local'}" [awayTeam]="{name:'Away'}"></app-game>
+<div *ngFor="let game of getGamesSummary()">
+  <app-game [localTeam]="game.localTeam" [awayTeam]="game.awayTeam" [localTeamScore]="game.localTeamScore" [awayTeamScore]="game.awayTeamScore"></app-game>
+</div>
