@@ -88,4 +88,24 @@ describe('ScoreboardComponent', () => {
     component.finishGame(gameToFinish)
     expect(component.games.length).toEqual(data.length-1)
   })
+
+  it('should return a summary of the games, ordered first by total score, then by addition order', () =>{
+    for(const game of data){
+      component.startGame(game.localTeam,game.awayTeam)
+    }
+    component.updateScore(0,5,data[0])
+    component.updateScore(10,2,data[1])
+    component.updateScore(2,2,data[2])
+    component.updateScore(6,6,data[3])
+    component.updateScore(3,1,data[4])
+
+    const summary: Game[] = component.getGamesSummary()
+    expect(summary[0]).toEqual(data[3])
+    expect(summary[1]).toEqual(data[1])
+    expect(summary[2]).toEqual(data[0])
+    expect(summary[3]).toEqual(data[4])
+    expect(summary[4]).toEqual(data[2])
+
+  })
 });
+
