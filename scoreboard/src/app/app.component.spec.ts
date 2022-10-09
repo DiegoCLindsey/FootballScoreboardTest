@@ -1,17 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let app: AppComponent
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MatCardModule,
       ],
       declarations: [
         AppComponent
       ],
     }).compileComponents();
+    const fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
   });
 
   it('should create the app', () => {
@@ -20,16 +27,25 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'scoreboard'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('scoreboard');
-  });
+  it('should load all raw data when ngOnInit is executed', () =>
+  {
+    app.ngOnInit()
+    expect(app.games.length).toEqual(5)
+  })
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('scoreboard app is running!');
-  });
+  it('should fail reading a line if data is not separed with ":" ', () =>{
+    app.data.push( "Mexico - Canada - 0 - 5")
+    expect(() => {app.ngOnInit()}).toThrow()
+  })
+
+  it('should fail reading a line if data is not separed with "-" (teams) ', () =>{
+    app.data.push( "Mexico, Canada : 0 - 5")
+    expect(() => {app.ngOnInit()}).toThrow()
+  })
+
+  it('should fail reading a line if data is not separed with "-" (score)', () =>{
+    app.data.push( "Mexico - Canada : 0 , 5")
+    expect(() => {app.ngOnInit()}).toThrow()
+  })
+
 });
