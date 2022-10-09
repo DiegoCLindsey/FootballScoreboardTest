@@ -35,4 +35,8 @@ export class GameComponent implements OnInit, Game {
       this.awayTeamScore = awayTeamScore
   }
 
+  public getTotalScore(): number {
+    return this.localTeamScore + this.awayTeamScore
+  }
+
 }
