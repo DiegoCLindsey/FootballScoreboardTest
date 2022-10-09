@@ -93,6 +93,7 @@ describe('ScoreboardComponent', () => {
     for(const game of data){
       component.startGame(game.localTeam,game.awayTeam)
     }
+
     component.updateScore(0,5,data[0])
     component.updateScore(10,2,data[1])
     component.updateScore(2,2,data[2])
@@ -100,11 +101,12 @@ describe('ScoreboardComponent', () => {
     component.updateScore(3,1,data[4])
 
     const summary: Game[] = component.getGamesSummary()
-    expect(summary[0]).toEqual(data[3])
-    expect(summary[1]).toEqual(data[1])
-    expect(summary[2]).toEqual(data[0])
-    expect(summary[3]).toEqual(data[4])
-    expect(summary[4]).toEqual(data[2])
+
+    expect(summary[0].localTeam.name).toEqual(data[3].localTeam.name)
+    expect(summary[1].localTeam.name).toEqual(data[1].localTeam.name)
+    expect(summary[3].localTeam.name).toEqual(data[4].localTeam.name)
+    expect(summary[2].localTeam.name).toEqual(data[0].localTeam.name)
+    expect(summary[4].localTeam.name).toEqual(data[2].localTeam.name)
 
   })
 });
