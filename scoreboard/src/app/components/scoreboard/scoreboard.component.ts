@@ -66,6 +66,9 @@ export class ScoreboardComponent implements OnInit, ScoreBoard{
     }
   }
 
+  /**
+   * @returns A list of games, sorted by the total score of the games and by reverse insertion order
+   */
   getGamesSummary(): Game[] {
     const copy = new Array(this.games)
     this.games.reverse()
