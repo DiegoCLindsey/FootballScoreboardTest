@@ -43,6 +43,15 @@ describe('ScoreboardComponent', () => {
   it('should throw an error if game is not in the list',() => {
     const gameToUpdate = new GameImpl({name:'Mexico'},{name:'Canada'})
     expect(() => component.updateScore(1,2,gameToUpdate)).toThrow()
+  })
+
+  it('should remove a game from the list when requested', () =>{
+    expect(component.games.length).toEqual(0)
+    component.startGame({name:'Mexico'},{name:'Canada'})
+    expect(component.games.length).toEqual(1)
+    component.finishGame(component.games[0])
+    expect(component.games.length).toEqual(0)
+
 
   })
 });
