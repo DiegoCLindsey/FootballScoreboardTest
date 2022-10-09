@@ -1,0 +1,15 @@
+.game__card{
+  margin: 1rem;
+  width: 30rem;
+  background-color: gainsboro;
+}
+
+.game__card--div{
+  display: flex;
+  justify-content: center;
+}
+
+.game__card--separator{
+  margin-left: 2em;
+  margin-right: 2em;
+}
