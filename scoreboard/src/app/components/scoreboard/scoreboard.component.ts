@@ -35,23 +35,29 @@ export class ScoreboardComponent implements OnInit, ScoreBoard{
 
   /**
    * Finds a game in the game list and updates its score
-   * @param localTeamScore
-   * @param awayTeamScore
-   * @param game
+   * @param localTeamScore updated local team score
+   * @param awayTeamScore updated away team score
+   * @param game game to update
    */
   public updateScore(localTeamScore: number, awayTeamScore: number, game:Game): void {
+    const filteredGame = this.findGame(game)
+    filteredGame?.updateScore(localTeamScore,awayTeamScore)
+  }
+
+  /**
+   * Searchs for a game in the game list. If the game is inside the list, returns it; Else it throws an error.
+   * @param game Requested Game
+   * @returns
+   */
+  private findGame(game:Game):Game{
     const filteredGame = this.games.find((filteredGame:Game) => {
       return filteredGame.awayTeam == game.awayTeam && filteredGame.localTeam == game.localTeam
     })
-
-    // If the game exists, update score.
-    if(filteredGame){
-      filteredGame?.updateScore(localTeamScore,awayTeamScore)
-    } else{
+    if(!filteredGame){
       throw("Error: Can't find requested game")
+    }else{
+      return filteredGame
     }
-
-
   }
 
   getGamesSummary(): string {
