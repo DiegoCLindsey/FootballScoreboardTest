@@ -29,6 +29,11 @@ export class ScoreboardComponent implements OnInit, ScoreBoard{
     this.games.push(newGame)
   }
 
+
+  /**
+   * Removes a game from the list
+   * @param game game to remove
+   */
   public finishGame(game: Game): void {
     const gameToFinish = this.findGame(game);
     this.games.splice(this.games.indexOf(gameToFinish),1)
@@ -48,7 +53,7 @@ export class ScoreboardComponent implements OnInit, ScoreBoard{
   /**
    * Searchs for a game in the game list. If the game is inside the list, returns it; Else it throws an error.
    * @param game Requested Game
-   * @returns
+   * @returns the instance of te described game which is inside the list
    */
   private findGame(game:Game):Game{
     const filteredGame = this.games.find((filteredGame:Game) => {
