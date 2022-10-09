@@ -67,7 +67,9 @@ export class ScoreboardComponent implements OnInit, ScoreBoard{
   }
 
   getGamesSummary(): Game[] {
-      return []
+    const copy = new Array(this.games)
+    this.games.reverse()
+    return this.games.sort((gameA:Game, gameB:Game) => { return gameB.getTotalScore() - gameA.getTotalScore()})
   }
 
 }
