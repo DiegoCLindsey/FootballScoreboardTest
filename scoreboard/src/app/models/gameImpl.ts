@@ -16,4 +16,8 @@ export class GameImpl implements Game{
       this.localTeamScore = localTeamScore
       this.awayTeamScore = awayTeamScore
   }
+
+  getTotalScore(): number{
+    return this.awayTeamScore + this.localTeamScore
+  }
 }

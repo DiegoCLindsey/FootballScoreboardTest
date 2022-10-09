@@ -6,4 +6,5 @@ export interface Game{
   awayTeamScore: number
   localTeamScore: number
   updateScore(localTeamScore:number,awayTeamScore:number): void
+  getTotalScore(): number
 }
