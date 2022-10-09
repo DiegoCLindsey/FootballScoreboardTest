@@ -35,11 +35,12 @@ describe('GameComponent', () => {
     expect(component.localTeam.name).toEqual("Local")
   })
 
-  it('should update the scores of the game', () => {
+  it('should update the scores of the game and return the total score correctly ', () => {
     expect(component.awayTeamScore).toEqual(0)
     expect(component.localTeamScore).toEqual(0)
     component.updateScore(1,2)
     expect(component.localTeamScore).toEqual(1)
     expect(component.awayTeamScore).toEqual(2)
+    expect(component.getTotalScore()).toEqual(3)
   })
 });
