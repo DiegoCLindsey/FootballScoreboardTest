@@ -33,4 +33,19 @@ describe('AppComponent', () => {
     expect(app.games.length).toEqual(5)
   })
 
+  it('should fail reading a line if data is not separed with ":" ', () =>{
+    app.data.push( "Mexico - Canada - 0 - 5")
+    expect(() => {app.ngOnInit()}).toThrow()
+  })
+
+  it('should fail reading a line if data is not separed with "-" (teams) ', () =>{
+    app.data.push( "Mexico, Canada : 0 - 5")
+    expect(() => {app.ngOnInit()}).toThrow()
+  })
+
+  it('should fail reading a line if data is not separed with "-" (score)', () =>{
+    app.data.push( "Mexico - Canada : 0 , 5")
+    expect(() => {app.ngOnInit()}).toThrow()
+  })
+
 });
