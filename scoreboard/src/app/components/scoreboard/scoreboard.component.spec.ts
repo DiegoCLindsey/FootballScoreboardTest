@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GameImpl } from 'src/app/models/gameImpl';
 import { Game } from '../../interfaces/game'
 import { ScoreboardComponent } from './scoreboard.component';
 
@@ -37,5 +38,11 @@ describe('ScoreboardComponent', () => {
     component.updateScore(1,2,gameToUpdate)
     expect(component.games[0].localTeamScore).toEqual(1)
     expect(component.games[0].awayTeamScore).toEqual(2)
+  })
+
+  it('should throw an error if game is not in the list',() => {
+    const gameToUpdate = new GameImpl({name:'Mexico'},{name:'Canada'})
+    expect(() => component.updateScore(1,2,gameToUpdate)).toThrow()
+
   })
 });
