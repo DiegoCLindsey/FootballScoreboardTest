@@ -30,7 +30,8 @@ export class ScoreboardComponent implements OnInit, ScoreBoard{
   }
 
   public finishGame(game: Game): void {
-
+    const gameToFinish = this.findGame(game);
+    this.games.splice(this.games.indexOf(gameToFinish),1)
   }
 
   /**
@@ -51,7 +52,7 @@ export class ScoreboardComponent implements OnInit, ScoreBoard{
    */
   private findGame(game:Game):Game{
     const filteredGame = this.games.find((filteredGame:Game) => {
-      return filteredGame.awayTeam == game.awayTeam && filteredGame.localTeam == game.localTeam
+      return filteredGame.awayTeam.name == game.awayTeam.name && filteredGame.localTeam.name == game.localTeam.name
     })
     if(!filteredGame){
       throw("Error: Can't find requested game")
